@@ -45,7 +45,7 @@ def home():
     return "Bot is running!"
 
 def run_flask():
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8000)
 
 async def main():
     api_id = '29677891'  # Get this from my.telegram.org
