@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/runner/workspace/main.py", line 4, in <module>
+    from telegram import Update
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/__init__.py", line 246, in <module>
+    from . import _version, constants, error, helpers, request, warnings
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/request/__init__.py", line 20, in <module>
+    from ._baserequest import BaseRequest
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 42, in <module>
+    from telegram.request._requestdata import RequestData
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/request/_requestdata.py", line 25, in <module>
+    from telegram.request._requestparameter import RequestParameter
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/request/_requestparameter.py", line 27, in <module>
+    from telegram._files.inputsticker import InputSticker
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/_files/inputsticker.py", line 23, in <module>
+    from telegram._files.sticker import MaskPosition
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/_files/sticker.py", line 24, in <module>
+    from telegram._files.file import File
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/_files/file.py", line 26, in <module>
+    from telegram._passport.credentials import decrypt
+  File "/nix/store/l4y8f9sn6x83b2pvyf2nfgv4x149vdi1-python3.12-python-telegram-bot-21.2/lib/python3.12/site-packages/telegram/_passport/credentials.py", line 26, in <module>
+    from cryptography.hazmat.primitives.asymmetric.padding import MGF1, OAEP
+  File "/nix/store/m7ncn8zis3nnv1yj0iw5m0i7qhd2d47j-python3.12-cryptography-42.0.5/lib/python3.12/site-packages/cryptography/hazmat/primitives/asymmetric/padding.py", line 9, in <module>
+    from cryptography.hazmat.primitives import hashes
+  File "/nix/store/m7ncn8zis3nnv1yj0iw5m0i7qhd2d47j-python3.12-cryptography-42.0.5/lib/python3.12/site-packages/cryptography/hazmat/primitives/hashes.py", line 87, in <module>
+    Hash = rust_openssl.hashes.Hash
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'cryptography.hazmat.bindings._rust.openssl' has no attribute 'hashes'
+ 
