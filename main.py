@@ -56,7 +56,8 @@ async def main():
         print("Error: TELEGRAM_BOT_TOKEN environment variable not set")
         return
 
-    client = TelegramClient('bot_session', api_id, api_hash).start(bot_token=bot_token)
+    client = TelegramClient('bot_session', api_id, api_hash)
+    await client.start(bot_token=bot_token)
 
     @client.on(events.NewMessage(pattern='/approx'))
     async def handle_approx(event):
