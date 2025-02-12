@@ -48,8 +48,8 @@ def run_flask():
     app.run(host='0.0.0.0', port=8080)
 
 async def main():
-    api_id = 'your_api_id'  # Get this from my.telegram.org
-    api_hash = 'your_api_hash'  # Get this from my.telegram.org
+    api_id = '29677891'  # Get this from my.telegram.org
+    api_hash = '3f53f1dba0f255b941c64f9e3b97137a'  # Get this from my.telegram.org
     bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
 
     if not bot_token:
