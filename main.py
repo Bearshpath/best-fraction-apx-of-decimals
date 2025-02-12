@@ -1,14 +1,10 @@
+
 import os
+from telegram.ext import Updater, CommandHandler
 import threading
 from flask import Flask
-from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
 
-def approx_command(update: Update, context: CallbackContext):
-    """
-    Handles the /approx command.
-    Expected format: /approx <number> <max_denom>
-    """
+def approx_command(update, context):
     try:
         args = context.args
         if len(args) != 2:
@@ -17,20 +13,17 @@ def approx_command(update: Update, context: CallbackContext):
         number = float(args[0])
         max_denom = int(args[1])
         if max_denom <= 0:
-            update.message.reply_text("Maximum denominator must be a positive integer.")
+            update.message.reply_text("Maximum denominator must be positive")
             return
-
+            
         num, denom = best_rational(number, max_denom)
         approx_value = num / denom
         error = abs(number - approx_value)
-        response = (
-            f"Best rational approximation for {number} (denom <= {max_denom}):\n"
-            f"{num}/{denom} = {approx_value}\n"
-            f"Absolute error: {error}"
-        )
+        
+        response = f"Best rational approximation for {number} (max denom={max_denom}):\n{num}/{denom} = {approx_value}\nError: {error}"
         update.message.reply_text(response)
     except Exception as e:
-        update.message.reply_text(f"Error: {e}")
+        update.message.reply_text(f"Error: {str(e)}")
 
 def farey(x, N):
     a, b = 0, 1
@@ -77,18 +70,17 @@ def run_flask():
 def main():
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     if not token:
-        print("Error: TELEGRAM_BOT_TOKEN environment variable not set.")
+        print("Error: TELEGRAM_BOT_TOKEN environment variable not set")
         return
 
-    updater = Updater(token, use_context=True)
+    updater = Updater(token=token, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("approx", approx_command))
-
+    
     flask_thread = threading.Thread(target=run_flask)
-    flask_thread.daemon = True
     flask_thread.start()
-
-    print("Bot is running. Press Ctrl+C to stop.")
+    
+    print("Bot started. Press Ctrl+C to stop.")
     updater.start_polling()
     updater.idle()
 
