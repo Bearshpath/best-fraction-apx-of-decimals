@@ -59,6 +59,10 @@ async def main():
     client = TelegramClient('bot_session', api_id, api_hash)
     await client.start(bot_token=bot_token)
 
+    @client.on(events.NewMessage(pattern='/start'))
+    async def start_handler(event):
+        await event.reply("Hello! I'm a bot that helps with rational approximations.\nUse /approx <number> <max_denominator> to get started.")
+
     @client.on(events.NewMessage(pattern='/approx'))
     async def handle_approx(event):
         try:
