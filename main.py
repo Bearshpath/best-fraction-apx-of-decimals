@@ -1,4 +1,3 @@
-
 import os
 from telegram.ext import Updater, CommandHandler
 import threading
@@ -15,11 +14,11 @@ def approx_command(update, context):
         if max_denom <= 0:
             update.message.reply_text("Maximum denominator must be positive")
             return
-            
+
         num, denom = best_rational(number, max_denom)
         approx_value = num / denom
         error = abs(number - approx_value)
-        
+
         response = f"Best rational approximation for {number} (max denom={max_denom}):\n{num}/{denom} = {approx_value}\nError: {error}"
         update.message.reply_text(response)
     except Exception as e:
@@ -76,10 +75,10 @@ def main():
     updater = Updater(token=token, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("approx", approx_command))
-    
+
     flask_thread = threading.Thread(target=run_flask)
     flask_thread.start()
-    
+
     print("Bot started. Press Ctrl+C to stop.")
     updater.start_polling()
     updater.idle()
